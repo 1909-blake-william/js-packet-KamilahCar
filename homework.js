@@ -292,9 +292,7 @@ console.log(kamilah);
 // The following line should set a Person object to the variable john:
 // 	let john = getPerson("John", 30);
 function getPerson(name, age){
-    this.name = new String();
-    this.age = new number();
-    const person = {name: name, age: age};
+    return {name: name, age: age};
 
 }
 let anotherKamilah = getPerson("Kamilah", 26);
