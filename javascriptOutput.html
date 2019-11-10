@@ -32,6 +32,7 @@ function fib(n){
     }
    
 }
+console.log("Fibonacci Result:");
 console.log(fib(10));
 
 // 2. Bubble Sort
@@ -57,6 +58,7 @@ function bubbleSort(numArray){
     return arrayToSwap;
       
 }
+console.log("BubbleSort Result:");
 console.log(bubbleSort([1, 5, 2, 1, 6]));
 
 // 3. Reverse String
@@ -77,6 +79,7 @@ function reverseStr(someStr){
     return finalString; 
     } 
 }
+console.log("Reverse String Result:");
 console.log(reverseStr("Hello"));
 
 // 4. Factorial
@@ -95,6 +98,7 @@ function factorial(someNum){
    
 
 }
+console.log("Factorial Result:");
 console.log(factorial(10));
 
 // 5. Substring
@@ -110,6 +114,7 @@ function substring(someStr, length, offset){
         return someStr.slice(offset, offset + length);
     }
 }
+console.log("SubString Result");
 //Should return up World?
 console.log(substring("What up World?", 9, 5));
 
@@ -128,6 +133,7 @@ function isEven (someNum){
         return false;
     }
 }
+console.log("IsEven Result:");
 console.log(isEven(10));
 console.log(isEven(11));
 
@@ -148,6 +154,7 @@ function isPalindrome(someStr){
         return false;
     }
 }
+console.log("IsPalindrome Result:");
 console.log(isPalindrome("Pokemon"));
 console.log(isPalindrome("trert"));
 console.log(isPalindrome("tre ! ert"));
@@ -183,27 +190,63 @@ function printShape(shape, height, character){
         }
     } else if (shape === "Triangle"){
         for(let i = 0; i < height; i++){
-            for(let j = 0; j < height; j++){
+            for(let j = 0; j < i + 1; j++){
                 document.write(character);
             }
-            document.write(character);
+            document.write('<br>');
         }
     } else {
-
+        for (let i = 0; i <= height/2 + 1; i++){
+            for(let k = 0; k < (height - i); k++){
+                document.write("&nbsp;");
+            }
+            for (let j = 0; j < i ; j++){
+                document.write(character);
+            }
+            document.write('<br>');
+        }
+        for (let i = 0; i <= height/2 + 1; i++){
+            for(let k = height/2; k < (height + i); k++){
+                document.write("&nbsp;");
+            }
+            for (let j = height/2 - 1; j > i ; j--){
+                document.write(character);
+            }
+            document.write('<br>');
+        }
     }
 }
+console.log("Shape Results printed on webpage");
 printShape("Square", 3, "%");
 printShape("Square", 10, "*");
-/*printShape("Triangle", 3, "%"));
-printShape("Diamond", 5, "%"));*/
+printShape("Triangle", 3, "%");
+printShape("Triangle", 5, "*");
+printShape("Diamond", 5, "%");
+printShape("Diamond", 7, "*");
 
 // 9. Object literal
 // Define function traverseObject(someObj)
 // Print every property and it's value.
 function traverseObject(someObj){
-
+    for(let i in someObj){
+        if (someObj.hasOwnProperty(i)){
+            console.log(someObj.i = someObj[i]);
+        }
+    }
+    return someObj;
 }
-
+const pokemon = {
+        name: "Pikachu",
+        healthPoints: 100,
+        level: 20,
+        type: {
+            id: 5, // should probably find a way to get the correct id
+            name: "Electric"
+        },
+        trainer: "Kamilah"
+    }
+    console.log("TraverseObject Results:");
+console.log(traverseObject(pokemon));
 
 // 10. Delete Element
 // Define function deleteElement(someArr)
@@ -212,13 +255,15 @@ function traverseObject(someObj){
 // Print length
 // The lengths should be the same.
 function deleteElement(someArr){
-    
-    for (let i = 0; i < someArr.length; i++){
-        if (i === 3){
-
-        }
-    }
+    let array = Array.from(someArr);
+    let initalLength = array.length;
+    console.log(initalLength);
+    let elementDeleted = delete array[2];
+    console.log(elementDeleted.length);
+    return array;
 }
+console.log("DeleteElement Results:");
+console.log(deleteElement(["Banana", "Orange", "Apple", "Mango"]));
 
 // 11. Splice Element
 // Define function spliceElement(someArr)
@@ -226,20 +271,40 @@ function deleteElement(someArr){
 // Splice the third element in the array.
 // Print length
 // The lengths should be one less than the original length.
-
+function spliceElement(someArr){
+    let array = Array.from(someArr);
+    let initialLength = array.length;
+    console.log(initialLength);
+    array.splice(2, 1).length;  
+    console.log(array.length);
+    return array;
+}
+console.log("SpliceElement Results:");
+console.log(spliceElement(["Banana", "Orange", "Apple", "Mango"]));
 
 // 12. Defining an object using a constructor
 // Define a function Person(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = new Person("John", 30);
-
+function Person(name, age){
+   this.name = name;
+   this.age = age;
+   
+}
+let kamilah = new Person("Kamilah", 26);
+console.log("SetPerson Results:");
+console.log(kamilah);
 
 // 13. Defining an object using an object literal
 // Define function getPerson(name, age)
 // The following line should set a Person object to the variable john:
 // 	let john = getPerson("John", 30);
+function getPerson(name, age){
+    return {name: name, age: age};
 
-
-
+}
+let anotherKamilah = getPerson("Kamilah", 26);
+console.log("GetPerson Results:");
+console.log(anotherKamilah);
 </script>
 </html>
